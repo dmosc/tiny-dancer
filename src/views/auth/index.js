@@ -14,20 +14,8 @@ const Auth = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
-  };
 
-  useEffect(() => {
-    openSignIn();
-  });
-  /**
-   * Opens Metamask sign in
-   */
-  async function openSignIn() {
-    if (!window.web3) {
-      // If not injected web3 environment, show a warning
-      alert('This app needs some web3 provider such as metamask');
-    } else {
+    if (window.web3) {
       // Instantiate a new web3 with full capabilities
       const web3 = new Web3(Web3.givenProvider, null, {});
 
@@ -39,16 +27,33 @@ const Auth = () => {
         accounts[0],
         '',
       );
+
       console.log(signature);
+      login(email, password);
+    } else {
+      needMetamaskAlert();
     }
-  }
+  };
+
+  useEffect(() => {
+    if (!window.web3) {
+      needMetamaskAlert();
+    }
+  });
+
+  /**
+   * Alert of no metamask
+   */
+  const needMetamaskAlert = () => {
+    alert('This app needs some web3 provider such as metamask');
+  };
 
   return (
     <Fragment>
       {' '}
-      <h1 className="large text-primary">Sign In</h1>
+      <h1 className="large text-primary">Register</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Sign In Your Account
+        <i className="fas fa-user"></i> Register Your Account
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
