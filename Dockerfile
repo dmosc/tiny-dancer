@@ -8,6 +8,7 @@ ARG REACT_APP_HTTP_URI="http:localhost:4000"
 ENV REACT_APP_HTTP_URI=$REACT_APP_HTTP_URI
 
 COPY . .
+RUN rm -rf server/
 RUN yarn global add serve
 RUN yarn install --production
 RUN yarn build
