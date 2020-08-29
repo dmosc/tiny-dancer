@@ -19,8 +19,12 @@
       "jsx": true
     },
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
   },
   "plugins": ["react"],
-  "rules": {}
+  "rules": {
+    "new-cap": 0
+  },
+  "parser": "babel-eslint"
 }
