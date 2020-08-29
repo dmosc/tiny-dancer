@@ -6,10 +6,10 @@ import 'antd/dist/antd.css';
 import App from './App';
 
 ReactDOM.render(
-    <React.StrictMode>
-      <Router basename='/'>
-        <App/>
-      </Router>
-    </React.StrictMode>,
-    document.getElementById('root'),
+  <React.StrictMode>
+    <Router basename="/">
+      <App />
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root'),
 );

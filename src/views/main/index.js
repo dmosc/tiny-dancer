@@ -15,11 +15,11 @@ const SignDocument = Loadable({
 
 const Main = () => {
   return (
-      <Switch>
-        <Route exact path='/main/new-document' component={NewDocument}/>
-        <Route exact path='/main/sign-document' component={SignDocument}/>
-        <Redirect to='/main/new-document'/>
-      </Switch>
+    <Switch>
+      <Route exact path="/main/new-document" component={NewDocument} />
+      <Route exact path="/main/sign-document" component={SignDocument} />
+      <Redirect to="/main/new-document" />
+    </Switch>
   );
 };
 

@@ -3,9 +3,9 @@ import {Card} from 'antd';
 
 const NewDocument = () => {
   return (
-      <Card title="Create New Document" bordered={false}>
-        View to submit a new document
-      </Card>
+    <Card title="Create New Document" bordered={false}>
+      View to submit a new document
+    </Card>
   );
 };
 

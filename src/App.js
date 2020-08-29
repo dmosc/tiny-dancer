@@ -15,10 +15,10 @@ const Main = Loadable({
 
 const App = () => {
   return (
-      <Switch>
-        <Route path='/auth' component={Auth}/>
-        <Route path='/main' component={Main}/>
-      </Switch>
+    <Switch>
+      <Route path="/auth" component={Auth} />
+      <Route path="/main" component={Main} />
+    </Switch>
   );
 };
 
