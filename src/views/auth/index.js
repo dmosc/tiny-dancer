@@ -1,5 +1,4 @@
-import React, {Fragment, useState} from 'react';
-import {Card} from 'antd';
+import React, {Fragment} from 'react';
 
 const Auth = () => {
   return (
