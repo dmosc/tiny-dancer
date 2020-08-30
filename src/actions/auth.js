@@ -8,10 +8,10 @@ export const login = async (
   lastName,
   username,
   image,
-  account,
+  ethAddress,
   signature,
 ) => {
-  console.log(email, firstName, lastName, username, account, signature);
+  console.log(email, firstName, lastName, username, ethAddress, signature);
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export const login = async (
     lastName,
     username,
     image,
-    account,
+    ethAddress,
     signature,
   });
   try {
