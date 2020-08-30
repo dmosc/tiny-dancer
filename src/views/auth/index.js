@@ -1,7 +1,12 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment, useState, useEffect, Component} from 'react';
 import {login} from '../../actions/auth';
 import Web3 from 'web3';
 import {Link} from 'react-router-dom';
+import {Card, Form, Input, Button, Divider, Typography} from 'antd';
+import {UserOutlined, LockOutlined} from '@ant-design/icons';
+
+const {Item} = Form;
+const {Title} = Typography;
 
 const Auth = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +22,7 @@ const Auth = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('hola');
     if (window.web3) {
       // Instantiate a new web3 with full capabilities
       const web3 = new Web3(Web3.givenProvider, null, {});
@@ -52,59 +57,97 @@ const Auth = () => {
   };
 
   return (
-    <Fragment>
-      {' '}
-      <h1 className="large text-primary">Register</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Register Your Account
-      </p>
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
-        <div className="form-group">
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="firstName"
-            placeholder="First Name"
-            name="firstName"
-            value={firstName}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="lastName"
-            placeholder="Last Name"
-            name="lastName"
-            value={lastName}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="username"
-            placeholder="username"
-            name="username"
-            value={username}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <input type="submit" className="btn btn-primary" value="Login" />
-      </form>
-      <p className="my-1">
-        Dont have an account? <Link to="/login">Sign Up</Link>
-      </p>
-    </Fragment>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '15%',
+      }}
+    >
+      <Card style={{maxWidth: 450, width: '100%'}}>
+        <Fragment>
+          {' '}
+          <Title>Register</Title>
+          <p className="lead">
+            <Title level={3}>Register Your Account</Title>
+          </p>
+          <form onSubmit={(e) => onSubmit(e)}>
+            <div className="form-group">
+              <Item style={{marginTop: 10}}>
+                <Input
+                  type="email"
+                  placeholder="Email Address"
+                  name="email"
+                  value={email}
+                  onChange={(e) => onChange(e)}
+                  required
+                />
+              </Item>
+            </div>
+            <div className="form-group">
+              <Item style={{marginTop: 10}}>
+                <Input
+                  type="firstName"
+                  placeholder="First Name"
+                  name="firstName"
+                  value={firstName}
+                  onChange={(e) => onChange(e)}
+                  required
+                />
+              </Item>
+            </div>
+            <div className="form-group">
+              <Item style={{marginTop: 10}}>
+                <Input
+                  type="lastName"
+                  placeholder="Last Name"
+                  name="lastName"
+                  value={lastName}
+                  onChange={(e) => onChange(e)}
+                  required
+                />
+              </Item>
+            </div>
+            <div className="form-group">
+              <Item style={{marginTop: 10}}>
+                <Input
+                  type="username"
+                  placeholder="username"
+                  name="username"
+                  value={username}
+                  onChange={(e) => onChange(e)}
+                  required
+                />
+              </Item>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Button type="primary" htmlType="submit">
+                Login
+              </Button>
+            </div>
+          </form>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              marginTop: 5,
+            }}
+          >
+            <p className="my-1">
+              Dont have an account? <Link to="/login">Sign Up</Link>
+            </p>
+          </div>
+        </Fragment>
+      </Card>
+    </div>
   );
 };
 
