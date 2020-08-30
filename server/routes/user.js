@@ -65,6 +65,7 @@ user.post('/register', async (req, res) => {
 
     res.status(200).json(token);
   } catch (e) {
+    console.log(e);
     res.status(404).send(e.toString());
   }
 });
