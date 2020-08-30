@@ -31,7 +31,7 @@ documents.post('/new-document', async (req, res) => {
 
     await document.save();
 
-    res.status(200).json(url);
+    res.status(200).json(document);
   } catch (e) {
     res.status(400).send(e.toString());
   }
