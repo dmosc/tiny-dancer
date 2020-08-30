@@ -26,6 +26,7 @@ steps:
         'managed',
       ]
   - name: 'gcr.io/cloud-builders/docker'
+    timeout: 600s
     args:
       [
         'build',
