@@ -2,6 +2,8 @@ import React, {Fragment, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Web3 from 'web3';
 import {login} from '../../actions/auth';
+import {Button} from 'antd';
+
 const Login = () => {
   useEffect(() => {
     if (!window.web3) {
@@ -38,17 +40,25 @@ const Login = () => {
   };
 
   return (
-    <Fragment>
-      <input
-        type="button"
-        className="btn btn-primary"
-        value="Log in"
-        onClick={openSignIn}
-      />
-      <p className="my-1">
-        Dont have an account? <Link to="/auth">Sign Up</Link>
-      </p>
-    </Fragment>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '15%',
+      }}
+    >
+      <Fragment>
+        <Button type="primary" htmlType="submit" onClick={openSignIn}>
+          Log in
+        </Button>
+        <p className="my-1">
+          <div style={{marginTop: 10}}>
+            Dont have an account? <Link to="/auth">Sign Up</Link>
+          </div>
+        </p>
+      </Fragment>
+    </div>
   );
 };
 
