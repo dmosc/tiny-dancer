@@ -12,7 +12,7 @@ import {
   Button,
 } from 'antd';
 import {UploadOutlined} from '@ant-design/icons';
-import {newDocument} from '../../../../actions/newDocument';
+import api from 'api';
 const {Header, Content, Footer} = Layout;
 const {Title} = Typography;
 const {Item} = Form;
@@ -31,19 +31,18 @@ const NewDocument = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log('Mandar');
-    newDocument(name, theArray, file);
+    await api.post('/documents/new-document', {
+      name,
+      signatures: theArray,
+      file,
+    });
   };
 
-  function onSelect(option) {
-    // console.log('select', option.id);
+  const onSelect = (option) => {
     setTheArray((oldArray) => [...oldArray, option.id]);
-    // console.log(theArray);
-  }
+  };
 
-  function onChangeMentions(value) {
-    // console.log('Change:', value);
-  }
+  const onChangeMentions = (value) => {};
 
   const props = {
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -56,8 +55,6 @@ const NewDocument = () => {
           const img = document.createElement('img');
           img.src = reader.result;
           setFormData({...formDocument, file: reader.result});
-          // console.log(file);
-          // console.log(img);
           img.onload = () => {
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0);
@@ -66,8 +63,6 @@ const NewDocument = () => {
             ctx.fillText('Ant Design', 20, 20);
             canvas.toBlob(resolve);
           };
-          // reader.readAsText(file)
-          // console.log(file)
         };
       });
     },

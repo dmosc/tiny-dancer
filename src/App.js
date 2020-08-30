@@ -1,7 +1,9 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
+import {useUser} from 'providers/user';
 import Loadable from 'react-loadable';
 import TopBarProgress from 'react-topbar-progress-indicator';
+import Main from 'views/main';
 
 const Auth = Loadable({
   loader: () => import('./views/auth'),
@@ -13,18 +15,21 @@ const Login = Loadable({
   loading: TopBarProgress,
 });
 
-const Main = Loadable({
-  loader: () => import('./views/main'),
-  loading: TopBarProgress,
-});
-
 const App = () => {
+  const {token} = useUser();
+
   return (
-    <Switch>
-      <Route path="/auth" component={Auth} />
-      <Route path="/login" component={Login} />
-      <Route path="/main" component={Main} />
-    </Switch>
+    <>
+      {!token ? (
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/auth" component={Auth} />
+          <Redirect to="/login" />
+        </Switch>
+      ) : (
+        <Main />
+      )}
+    </>
   );
 };
 

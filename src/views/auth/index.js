@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect} from 'react';
-import {register} from '../../actions/auth';
+import api from 'api';
 import Web3 from 'web3';
+import {useUser} from 'providers/user';
 import {Link} from 'react-router-dom';
 import {Card, Form, Input, Button, Typography} from 'antd';
 
@@ -8,6 +9,7 @@ const {Item} = Form;
 const {Title} = Typography;
 
 const Auth = () => {
+  const {setToken} = useUser();
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -33,15 +35,17 @@ const Auth = () => {
         '',
       );
 
-      register(
+      const res = await api.post('/users/register', {
         email,
         firstName,
         lastName,
         username,
-        '',
-        accounts[0],
+        image: '',
+        ethAddress: accounts[0],
         signature,
-      );
+      });
+
+      setToken(res.data);
     } else {
       needMetamaskAlert();
     }
