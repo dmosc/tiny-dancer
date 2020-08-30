@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {PageHeader, Button} from 'antd';
-import {useLocation, useHistory, Link} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import {useUser} from 'providers/user';
 import {PlusOutlined} from '@ant-design/icons';
 import {NavbarContainer, Menu} from './elements';
@@ -11,16 +11,8 @@ const {Item} = Menu;
 const NavBar = () => {
   const {setToken} = useUser();
   const history = useHistory();
-  const location = useLocation();
 
   const handleLogout = () => setToken();
-
-  const format = (pathname) => {
-    const title = pathname
-      .substring(pathname.lastIndexOf('/') + 1)
-      .replace(/-/g, ' ');
-    return title.charAt(0).toUpperCase() + title.slice(1);
-  };
 
   return (
     <NavbarContainer>
@@ -31,7 +23,7 @@ const NavBar = () => {
         <PageHeader
           style={{marginRight: 'auto', padding: '0px 20px'}}
           onBack={() => history.goBack()}
-          title={format(location.pathname)}
+          title="Smart Sign"
         />
         <Link to="/new-document">
           <Button type="primary" shape="round" icon={<PlusOutlined />}>

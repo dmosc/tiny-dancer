@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import api from 'api';
 import shortid from 'shortid';
+import {Link} from 'react-router-dom';
 import {Row, Col, Card, Button, Tag} from 'antd';
 import Text from 'antd/es/typography/Text';
 
@@ -27,8 +28,8 @@ const MyDocuments = () => {
         );
 
         return (
-          <Col className="gutter-row" span={6} key={document.id}>
-            <a href={document.url} target="_blank" rel="noopener noreferrer">
+          <Col className="gutter-row" span={6} key={document._id}>
+            <Link to={`/documents/${document._id}`}>
               <Card
                 title={document.name}
                 bordered={false}
@@ -49,7 +50,7 @@ const MyDocuments = () => {
                   </div>
                 </div>
               </Card>
-            </a>
+            </Link>
           </Col>
         );
       })}

@@ -105,4 +105,20 @@ documents.get('/', async (req, res) => {
   }
 });
 
+documents.get('/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+
+    const document = await Document.findOne({_id: id}).populate(
+      'owner signatures.user',
+    );
+
+    if (!document) throw new Error('Document does not exist!');
+
+    res.status(200).json(document);
+  } catch (e) {
+    res.status(400).send(e.toString());
+  }
+});
+
 export default documents;
