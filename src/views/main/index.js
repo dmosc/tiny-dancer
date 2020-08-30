@@ -2,6 +2,7 @@ import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import Loadable from 'react-loadable';
 import TopBarProgress from 'react-topbar-progress-indicator';
+import MainLayout from 'layouts/main';
 
 const NewDocument = Loadable({
   loader: () => import('./components/new-document'),
@@ -15,11 +16,13 @@ const SignDocument = Loadable({
 
 const Main = () => {
   return (
-    <Switch>
-      <Route exact path="/main/new-document" component={NewDocument} />
-      <Route exact path="/main/sign-document" component={SignDocument} />
-      <Redirect to="/main/new-document" />
-    </Switch>
+    <MainLayout>
+      <Switch>
+        <Route path="/new-document" component={NewDocument} />
+        <Route path="/sign-document" component={SignDocument} />
+        <Redirect to="/new-document" />
+      </Switch>
+    </MainLayout>
   );
 };
 
