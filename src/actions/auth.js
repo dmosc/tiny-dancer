@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Login user
 
-export const login = async (
+export const register = async (
   email,
   firstName,
   lastName,
@@ -27,13 +27,37 @@ export const login = async (
     signature,
   });
   try {
-    const res = await axios.post('/user/register', body, config);
+    const res = await axios.post(
+      'http://localhost:4000/user/register',
+      body,
+      config,
+    );
     console.log(res);
-    localStorage.setItem('token', res.token);
+    localStorage.setItem('token', res.data);
   } catch (err) {
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => console.log(error));
-    }
+    console.log(err);
+  }
+};
+
+export const login = async (ethAddress, signature) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  const body = JSON.stringify({
+    ethAddress,
+    signature,
+  });
+  try {
+    const res = await axios.post(
+      'http://localhost:4000/user/login',
+      body,
+      config,
+    );
+    console.log(res.data);
+    localStorage.setItem('token', res.data);
+  } catch (err) {
+    console.log(err);
   }
 };

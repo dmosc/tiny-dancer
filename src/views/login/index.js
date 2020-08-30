@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Web3 from 'web3';
-
+import {login} from '../../actions/auth';
 const Login = () => {
   useEffect(() => {
     if (!window.web3) {
@@ -28,11 +28,12 @@ const Login = () => {
       const accounts = await web3.eth.requestAccounts();
       console.log(accounts);
       const signature = await web3.eth.personal.sign(
-        'Please sign here',
+        'Elton John',
         accounts[0],
         '',
       );
       console.log(signature);
+      login(accounts[0], signature);
     } else {
       needMetamaskAlert();
     }

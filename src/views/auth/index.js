@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useEffect} from 'react';
-import {login} from '../../actions/auth';
+import {register} from '../../actions/auth';
 import Web3 from 'web3';
 import {Link} from 'react-router-dom';
 import {Card, Form, Input, Button, Typography} from 'antd';
@@ -29,13 +29,21 @@ const Auth = () => {
       const accounts = await web3.eth.requestAccounts();
       console.log(accounts);
       const signature = await web3.eth.personal.sign(
-        'Please sign here',
+        'Elton John',
         accounts[0],
         '',
       );
 
       console.log(signature);
-      login(email, firstName, lastName, username, '', accounts[0], signature);
+      register(
+        email,
+        firstName,
+        lastName,
+        username,
+        '',
+        accounts[0],
+        signature,
+      );
     } else {
       needMetamaskAlert();
     }
@@ -127,7 +135,7 @@ const Auth = () => {
               }}
             >
               <Button type="primary" htmlType="submit">
-                Login
+                Register
               </Button>
             </div>
           </form>
