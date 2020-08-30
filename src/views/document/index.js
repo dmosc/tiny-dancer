@@ -30,12 +30,19 @@ const Document = () => {
     getData();
   }, []);
 
+  const submitDocument = (document) => {
+    return 1;
+  };
+
   return (
     <Row>
       {documentData && (
         <>
           <Card>
             <PreviewPDF src={documentData.url} />
+            <Text
+              strong
+            >{`Documendo presentado por: ${documentData.owner.firstName} ${documentData.owner.lastName}`}</Text>
           </Card>
           <Card>
             <Steps current={current} direction="vertical">
@@ -100,16 +107,25 @@ const Document = () => {
                         ? 'Este documento está esperando ser enviado y registrado en Blockchain por su dueño'
                         : 'Este documento ya se encuentra validado y completo en la red de ethereum'}
                     </Text>
-                    {documentData.transactionHash && (
+                    <div style={{marginTop: 10}}>
                       <Button
                         as="a"
                         href={`https://ropsten.etherscan.io/tx/${documentData.transactionHash}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        style={{marginRight: 5}}
+                        disabled={!documentData.transactionHash}
                       >
                         Descargar
                       </Button>
-                    )}
+                      <Button
+                        onClick={() => submitDocument(documentData)}
+                        Z
+                        disabled={!documentData.transactionHash}
+                      >
+                        Registrar
+                      </Button>
+                    </div>
                   </>
                 }
               />
