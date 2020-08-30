@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   Layout,
   Menu,
@@ -31,18 +31,18 @@ const NewDocument = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log('Mandar');
+    // console.log('Mandar');
     newDocument(name, theArray, file);
   };
 
   function onSelect(option) {
-    console.log('select', option.id);
+    // console.log('select', option.id);
     setTheArray((oldArray) => [...oldArray, option.id]);
-    console.log(theArray);
+    // console.log(theArray);
   }
 
   function onChangeMentions(value) {
-    console.log('Change:', value);
+    // console.log('Change:', value);
   }
 
   const props = {
@@ -56,8 +56,8 @@ const NewDocument = () => {
           const img = document.createElement('img');
           img.src = reader.result;
           setFormData({...formDocument, file: reader.result});
-          console.log(file);
-          console.log(img);
+          // console.log(file);
+          // console.log(img);
           img.onload = () => {
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0);
@@ -66,14 +66,14 @@ const NewDocument = () => {
             ctx.fillText('Ant Design', 20, 20);
             canvas.toBlob(resolve);
           };
-          //reader.readAsText(file)
-          //console.log(file)
+          // reader.readAsText(file)
+          // console.log(file)
         };
       });
     },
   };
 
-  //ONSUBMIT
+  // ONSUBMIT
 
   return (
     <Layout className="layout">

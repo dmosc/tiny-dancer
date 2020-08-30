@@ -12,8 +12,6 @@ export const newDocument = async (name, signatures, file) => {
     file,
   });
   try {
-    console.log(body);
     const res = await axios.post('/documents/new-document', body);
-    console.log(res);
   } catch (err) {}
 };
