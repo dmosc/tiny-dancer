@@ -17,6 +17,8 @@
     "@babel/core": "^7.11.4",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
+    "@openzeppelin/contracts": "^3.1.0",
+    "@truffle/hdwallet-provider": "^1.0.43",
     "antd": "^4.6.1",
     "babel-eslint": "^10.1.0",
     "cookie-parser": "^1.4.5",
@@ -41,8 +43,10 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-react": "^7.20.3",
     "husky": "^4.2.5",
+    "nodemon": "^2.0.4",
     "prettier": "2.0.5",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "truffle": "^5.1.42"
   },
   "eslintConfig": {
     "extends": "react-app"
