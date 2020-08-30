@@ -148,7 +148,7 @@ const Auth = () => {
             }}
           >
             <p className="my-1">
-              Dont have an account? <Link to="/login">Sign Up</Link>
+              Already an account? <Link to="/login">Log in</Link>
             </p>
           </div>
         </Fragment>
