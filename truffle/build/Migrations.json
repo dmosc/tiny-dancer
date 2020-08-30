@@ -878,8 +878,8 @@
     "version": "0.6.0+commit.26b70077.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.2.4",
-  "updatedAt": "2020-08-30T05:23:15.678Z",
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-08-30T06:14:25.313Z",
   "devdoc": {
     "methods": {}
   },

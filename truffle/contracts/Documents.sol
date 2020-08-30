@@ -3,7 +3,7 @@ pragma solidity 0.6.0;
 pragma experimental ABIEncoderV2;
 import '@openzeppelin/contracts/cryptography/ECDSA.sol';
 
-contract DocumentsSignature {
+contract Documents {
   using ECDSA for bytes32;
 
   mapping(bytes32 => Document) public documents;
