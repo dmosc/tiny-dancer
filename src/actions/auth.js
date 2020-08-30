@@ -1,6 +1,7 @@
 import axios from 'axios';
-
 // Login user
+axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const register = async (
   email,
@@ -11,11 +12,6 @@ export const register = async (
   ethAddress,
   signature,
 ) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
   const body = JSON.stringify({
     email,
     firstName,
@@ -26,31 +22,18 @@ export const register = async (
     signature,
   });
   try {
-    const res = await axios.post(
-      'http://localhost:4000/user/register',
-      body,
-      config,
-    );
+    const res = await axios.post('/users/register', body);
     localStorage.setItem('token', res.data);
   } catch (err) {}
 };
 
 export const login = async (ethAddress, signature) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
   const body = JSON.stringify({
     ethAddress,
     signature,
   });
   try {
-    const res = await axios.post(
-      'http://localhost:4000/user/login',
-      body,
-      config,
-    );
+    const res = await axios.post('/users/login', body);
     localStorage.setItem('token', res.data);
   } catch (err) {}
 };

@@ -1,5 +1,4 @@
 import {Router} from 'express';
-import jwt from 'jsonwebtoken';
 import {User} from '../mongo-db/models';
 import {
   bufferToHex,
@@ -9,12 +8,9 @@ import {
   keccak,
   pubToAddress,
 } from 'ethereumjs-util';
-import {JWT_SECRET} from '../config';
+import {getToken} from '../utils/functions';
 
-const user = Router();
-
-const getToken = (user) =>
-  jwt.sign({id: user.id}, JWT_SECRET, {expiresIn: 86400});
+const users = Router();
 
 const validateSignature = (signature) => {
   const {v, r, s} = fromRpcSig(signature);
@@ -28,7 +24,7 @@ const validateSignature = (signature) => {
   return bufferToHex(pubToAddress(publicKey));
 };
 
-user.post('/login', async (req, res) => {
+users.post('/login', async (req, res) => {
   const {signature, ethAddress} = req.body;
   try {
     const user = await User.findOne({ethAddress});
@@ -49,7 +45,7 @@ user.post('/login', async (req, res) => {
   }
 });
 
-user.post('/register', async (req, res) => {
+users.post('/register', async (req, res) => {
   try {
     const user = new User({...req.body});
 
@@ -69,4 +65,24 @@ user.post('/register', async (req, res) => {
   }
 });
 
-export default user;
+users.get('/', async (req, res) => {
+  const {search} = req.query;
+  const regexSearch = new RegExp(search, 'i');
+
+  try {
+    const users = await User.find({
+      $or: [
+        {firstName: regexSearch},
+        {lastName: regexSearch},
+        {username: regexSearch},
+        {email: regexSearch},
+      ],
+    });
+
+    res.status(200).json(users);
+  } catch (e) {
+    res.status(404).send(e.toString());
+  }
+});
+
+export default users;
