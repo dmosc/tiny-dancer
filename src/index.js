@@ -9,14 +9,12 @@ import 'antd/dist/antd.css';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router basename="/">
-      <UserProvider>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </UserProvider>
-    </Router>
-  </React.StrictMode>,
+  <Router basename="/">
+    <UserProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </UserProvider>
+  </Router>,
   document.getElementById('root'),
 );

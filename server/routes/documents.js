@@ -123,4 +123,16 @@ documents.get('/:id', async (req, res) => {
   }
 });
 
+documents.post('/submit', async (req, res) => {
+  try {
+    const {document: documentId, transactionHash} = req.body;
+
+    await Document.findByIdAndUpdate(documentId, {transactionHash});
+
+    res.status(200).send(`Successfully updated document with tx`);
+  } catch (e) {
+    res.status(400).send(e.toString());
+  }
+});
+
 export default documents;

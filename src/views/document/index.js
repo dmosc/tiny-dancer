@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import api from 'api';
-import {Card, Steps, Typography, Button, List, Avatar} from 'antd';
+import Web3 from 'web3';
+import bs58 from 'bs58';
+import {documents} from 'ethereum';
+import {Card, Steps, Typography, Button, List, Avatar, message} from 'antd';
 import PreviewPDF from './components/preview-pdf';
 import {Row} from './elements';
 
@@ -13,25 +16,57 @@ const Document = () => {
   const [documentData, setDocument] = useState();
   const [current, setCurrent] = useState(0);
 
+  const getBytes32FromIpfsHash = (ipfsListing) => {
+    return '0x' + bs58.decode(ipfsListing).slice(2).toString('hex');
+  };
+
+  const getData = async () => {
+    const {data} = await api.get(`/documents/${params.documentId}`);
+    const isTotallySigned = data.signatures.every(({signature}) => !!signature);
+    if (isTotallySigned) {
+      if (data.transactionHash) setCurrent(3);
+      else setCurrent(2);
+    } else setCurrent(1);
+
+    setDocument(data);
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      const {data} = await api.get(`/documents/${params.documentId}`);
-      const isTotallySigned = data.signatures.every(
-        ({signature}) => !!signature,
-      );
-      if (isTotallySigned) {
-        if (data.transactionHash) setCurrent(3);
-        else setCurrent(2);
-      } else setCurrent(1);
-
-      setDocument(data);
-    };
-
     getData();
   }, []);
 
-  const submitDocument = (document) => {
-    return 1;
+  const submitDocument = async (document) => {
+    const web3 = new Web3(Web3.givenProvider, null, {});
+
+    const {abi, address} = documents;
+
+    const accounts = await web3.eth.requestAccounts();
+    const contract = new web3.eth.Contract(abi, address);
+
+    const isTotallySigned = document.signatures.every(
+      ({signature}) => !!signature,
+    );
+
+    if (isTotallySigned) {
+      const signers = document.signatures.map(({user, signature}) => [
+        web3.utils.fromAscii(user.firstName).padEnd(66, '0'),
+        user.ethAddress,
+        signature,
+      ]);
+
+      const transactionHash = await contract.methods
+        .addDocument(signers, getBytes32FromIpfsHash(document.hash))
+        .send({from: accounts[0]});
+
+      await api.post('/documents/submit', {
+        transactionHash,
+        document: document._id,
+      });
+
+      await getData();
+    } else {
+      message.warning('Todavia hay firmas pendientes');
+    }
   };
 
   return (
@@ -116,7 +151,7 @@ const Document = () => {
                         style={{marginRight: 5}}
                         disabled={!documentData.transactionHash}
                       >
-                        Descargar
+                        Ver en Blockchain
                       </Button>
                       <Button
                         onClick={() => submitDocument(documentData)}
