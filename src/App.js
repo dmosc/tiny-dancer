@@ -8,6 +8,11 @@ const Auth = Loadable({
   loading: TopBarProgress,
 });
 
+const Login = Loadable({
+  loader: () => import('./views/login'),
+  loading: TopBarProgress,
+});
+
 const Main = Loadable({
   loader: () => import('./views/main'),
   loading: TopBarProgress,
@@ -17,6 +22,7 @@ const App = () => {
   return (
     <Switch>
       <Route path="/auth" component={Auth} />
+      <Route path="/login" component={Login} />
       <Route path="/main" component={Main} />
     </Switch>
   );
