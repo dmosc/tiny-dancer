@@ -29,6 +29,8 @@ steps:
     args:
       [
         'build',
+        '--build-arg',
+        'REACT_APP_HTTP_URI=$_REACT_APP_HTTP_URI',
         '-t',
         'gcr.io/$PROJECT_ID/tiny-dancer-frontend:$COMMIT_SHA',
         '-f',
