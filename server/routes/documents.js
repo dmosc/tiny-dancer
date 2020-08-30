@@ -52,7 +52,7 @@ documents.get('/mine', async (req, res) => {
   }
 });
 
-document.post('/sign', async (req, res) => {
+documents.post('/sign', async (req, res) => {
   try {
     const token = getTokenFromRequest(req);
     const {id} = jwt.verify(token, JWT_SECRET);
