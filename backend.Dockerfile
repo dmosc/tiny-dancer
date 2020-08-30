@@ -1,6 +1,6 @@
 FROM node:10
 
-ENV API_PORT=4000
+ENV PORT=4000
 ENV MONGO_DB_URI=mongodb://host.docker.internal/tiny-dancer
 ENV JWT_SECRET=Ybp8AS5g6H
 
