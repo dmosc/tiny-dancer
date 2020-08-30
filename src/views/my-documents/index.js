@@ -18,6 +18,10 @@ const MyDocuments = () => {
     })();
   }, []);
 
+  const signDocument = (document) => {
+    return 1;
+  };
+
   return (
     <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
       {documents.map((document) => {
@@ -31,7 +35,14 @@ const MyDocuments = () => {
               <Card
                 title={document.name}
                 bordered={false}
-                actions={[<Button disabled={!canSubmit}>Publicar</Button>]}
+                actions={[
+                  <Button
+                    onClick={() => signDocument(document)}
+                    disabled={!canSubmit}
+                  >
+                    Publicar
+                  </Button>,
+                ]}
               >
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                   <Text style={{marginBottom: 5}}>Pendientes por firmar:</Text>
