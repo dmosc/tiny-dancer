@@ -3,7 +3,7 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import {useUser} from 'providers/user';
 import Loadable from 'react-loadable';
 import TopBarProgress from 'react-topbar-progress-indicator';
-import Main from 'views/main';
+import MainLayout from 'layouts/main';
 
 const Auth = Loadable({
   loader: () => import('./views/auth'),
@@ -12,6 +12,26 @@ const Auth = Loadable({
 
 const Login = Loadable({
   loader: () => import('./views/login'),
+  loading: TopBarProgress,
+});
+
+const Pending = Loadable({
+  loader: () => import('./views/pending'),
+  loading: TopBarProgress,
+});
+
+const Signed = Loadable({
+  loader: () => import('./views/signed'),
+  loading: TopBarProgress,
+});
+
+const MyDocuments = Loadable({
+  loader: () => import('./views/my-documents'),
+  loading: TopBarProgress,
+});
+
+const NewDocument = Loadable({
+  loader: () => import('./views/new-document'),
   loading: TopBarProgress,
 });
 
@@ -27,7 +47,15 @@ const App = () => {
           <Redirect to="/login" />
         </Switch>
       ) : (
-        <Main />
+        <MainLayout>
+          <Switch>
+            <Route path="/pending" component={Pending} />
+            <Route path="/signed" component={Signed} />
+            <Route path="/my-documents" component={MyDocuments} />
+            <Route path="/new-document" component={NewDocument} />
+            <Redirect to="/new-document" />
+          </Switch>
+        </MainLayout>
       )}
     </>
   );

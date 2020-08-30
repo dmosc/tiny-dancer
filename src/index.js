@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {UserProvider} from 'providers/user';
+import {ThemeProvider} from 'styled-components';
+import theme from 'theme';
 import {BrowserRouter as Router} from 'react-router-dom';
 import './index.css';
 import 'antd/dist/antd.css';
@@ -10,7 +12,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router basename="/">
       <UserProvider>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </UserProvider>
     </Router>
   </React.StrictMode>,
