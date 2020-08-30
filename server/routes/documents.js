@@ -2,7 +2,6 @@ import {Router} from 'express';
 import jwt from 'jsonwebtoken';
 import {User, Document} from '../mongo-db/models';
 import {
-  getToken,
   getTokenFromRequest,
   uploadFile,
   validateSignature,
