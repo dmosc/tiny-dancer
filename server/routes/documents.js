@@ -87,15 +87,15 @@ documents.get('/', async (req, res) => {
   try {
     const token = getTokenFromRequest(req);
     const {id} = jwt.verify(token, JWT_SECRET);
-    // const { signed } = req.query;
+    const {signed} = req.query;
 
-    // if(typeof signed === 'boolean'){
-    //   $elemMatch: {
-    //     'signatures.signature.'
-    //   }
-    // }
+    const query = {'signatures.user': id};
 
-    const documents = await Document.find({'signatures.user': id}).populate(
+    if (signed) {
+      query['signatures.signature'] = {$exists: signed};
+    }
+
+    const documents = await Document.find(query).populate(
       'owner signatures.user',
     );
 
