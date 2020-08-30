@@ -62,7 +62,7 @@ const NewDocument = () => {
           <Step status="wait" title="Step 3" />
         </Steps>
         <Content>
-          {current == 0 && (
+          {current === 0 && (
             <>
               <Dragger accept=".pdf" style={{padding: '40px 0'}} {...props}>
                 <p className="ant-upload-drag-icon">
