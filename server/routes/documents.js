@@ -52,6 +52,13 @@ documents.get('/', async (req, res) => {
   try {
     const token = getTokenFromRequest(req);
     const {id} = jwt.verify(token, JWT_SECRET);
+    // const { signed } = req.query;
+
+    // if(typeof signed === 'boolean'){
+    //   $elemMatch: {
+    //     'signatures.signature.'
+    //   }
+    // }
 
     const documents = await Document.find({'signatures.user': id}).populate(
       'owner signatures.user',
