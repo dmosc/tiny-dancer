@@ -27,14 +27,14 @@ contract Documents {
     require(!documents[_fingerprint].exists, 'Document already exists');
 
     for (uint256 i = 0; i < _signers.length; i++) {
-      address signer = _fingerprint.toEthSignedMessageHash().recover(
-        _signers[i].signature
-      );
+      // address signer = _fingerprint.toEthSignedMessageHash().recover(
+      //   _signers[i].signature
+      // );
 
-      require(
-        _signers[i].id == signer,
-        'Signature does not corresponds to signer'
-      );
+      // require(
+      //   _signers[i].id == signer,
+      //   'Signature does not corresponds to signer'
+      // );
 
       documents[_fingerprint].signers.push(_signers[i]);
     }
