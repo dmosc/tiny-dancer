@@ -1,28 +1,8 @@
 import {Router} from 'express';
 import {User} from '../mongo-db/models';
-import {
-  bufferToHex,
-  ecrecover,
-  fromRpcSig,
-  fromUtf8,
-  keccak,
-  pubToAddress,
-} from 'ethereumjs-util';
-import {getToken} from '../utils/functions';
+import {getToken, validateSignature} from '../utils/functions';
 
 const users = Router();
-
-const validateSignature = (signature) => {
-  const {v, r, s} = fromRpcSig(signature);
-  const message = 'Elton John';
-  const hexEthMessage = fromUtf8(
-    '\x19Ethereum Signed Message:\n' + message.length + message,
-  );
-  const messageHash = keccak(hexEthMessage);
-  const publicKey = ecrecover(messageHash, v, r, s);
-
-  return bufferToHex(pubToAddress(publicKey));
-};
 
 users.post('/login', async (req, res) => {
   const {signature, ethAddress} = req.body;
@@ -31,7 +11,7 @@ users.post('/login', async (req, res) => {
 
     if (!user) throw new Error('User does not exist!');
 
-    const recoveredAddress = validateSignature(signature);
+    const recoveredAddress = validateSignature(signature, 'Elton John');
 
     if (recoveredAddress.toLowerCase() === ethAddress.toLowerCase()) {
       const token = getToken(user);
@@ -49,7 +29,7 @@ users.post('/register', async (req, res) => {
   try {
     const user = new User({...req.body});
 
-    const recoveredAddress = validateSignature(user.signature);
+    const recoveredAddress = validateSignature(user.signature, 'Elton John');
 
     if (recoveredAddress.toLowerCase() !== user.ethAddress.toLowerCase()) {
       throw new Error('Signature does not match the records!');

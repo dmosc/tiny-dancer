@@ -75,6 +75,5 @@
       "pre-commit": "yarn format . && git add . && pretty-quick --staged",
       "pre-push": "yarn lint ."
     }
-  },
-  "proxy": "http://localhost:4000"
+  }
 }
