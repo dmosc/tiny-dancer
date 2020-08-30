@@ -92,7 +92,7 @@ documents.get('/', async (req, res) => {
     const query = {'signatures.user': id};
 
     if (signed) {
-      query.$exists = {'signatures.signature': signed};
+      query['signatures.signature'] = {$exists: signed};
     }
 
     const documents = await Document.find(query).populate(

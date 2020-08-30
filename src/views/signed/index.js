@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../api';
-import {Row, Col, Card, Button, Tag} from 'antd';
+import {Row, Col, Card, Tag} from 'antd';
 import Text from 'antd/es/typography/Text';
 
 const Signed = () => {
