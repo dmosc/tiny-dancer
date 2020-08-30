@@ -68,11 +68,13 @@ documents.post('/sign', async (req, res) => {
 
     if (recoveredAddress.toLowerCase() === user.ethAddress.toLowerCase()) {
       for (let i = 0; i < document.signatures.length; ++i) {
-        if (document.signatures[i].user === user.id) {
+        if (document.signatures[i].user.toString() === id) {
           document.signatures[i].signature = user.signature;
           break;
         }
       }
+
+      await document.save();
 
       res.status(200).send(`Successfully signed contract ${document.name}!`);
     } else {

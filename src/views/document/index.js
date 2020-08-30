@@ -20,9 +20,9 @@ const Document = () => {
         ({signature}) => !!signature,
       );
       if (isTotallySigned) {
-        if (data.transactionHash) setCurrent(2);
-        else setCurrent(1);
-      } else setCurrent(0);
+        if (data.transactionHash) setCurrent(3);
+        else setCurrent(2);
+      } else setCurrent(1);
 
       setDocument(data);
     };
@@ -47,7 +47,7 @@ const Document = () => {
           <Card>
             <Steps current={current} direction="vertical">
               <Step
-                title="PFS"
+                title="IPFS"
                 description={
                   <>
                     <Text>
@@ -120,8 +120,7 @@ const Document = () => {
                       </Button>
                       <Button
                         onClick={() => submitDocument(documentData)}
-                        Z
-                        disabled={!documentData.transactionHash}
+                        disabled={current < 2}
                       >
                         Registrar
                       </Button>

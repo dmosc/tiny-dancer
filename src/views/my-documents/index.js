@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import api from 'api';
 import shortid from 'shortid';
 import {Link} from 'react-router-dom';
-import {Row, Col, Card, Button, Tag} from 'antd';
+import {Row, Col, Card, Tag} from 'antd';
 import Text from 'antd/es/typography/Text';
 
 const MyDocuments = () => {
@@ -20,16 +20,13 @@ const MyDocuments = () => {
     })();
   }, []);
 
-  const signDocument = (document) => {
-    return 1;
-  };
-
   return (
     <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
       {documents.map((document) => {
         return (
           <Col className="gutter-row" span={6} key={document._id}>
             <Card
+              style={{marginBottom: 10}}
               title={document.name}
               bordered={false}
               actions={[
@@ -44,11 +41,14 @@ const MyDocuments = () => {
               <div style={{display: 'flex', flexDirection: 'column'}}>
                 <Text style={{marginBottom: 5}}>Pendientes por firmar:</Text>
                 <div>
-                  {document.signatures.map(({id, user}) => (
-                    <Tag color="red" style={{marginRight: 5}} key={id}>
-                      {user.username}
-                    </Tag>
-                  ))}
+                  {document.signatures.map(
+                    ({id, user, signature}) =>
+                      !signature && (
+                        <Tag color="red" style={{marginRight: 5}} key={id}>
+                          {user.username}
+                        </Tag>
+                      ),
+                  )}
                 </div>
               </div>
             </Card>
