@@ -24,7 +24,8 @@
   },
   "plugins": ["react"],
   "rules": {
-    "new-cap": 0
+    "new-cap": 0,
+    "no-console": ["error", {"allow": ["warn", "error", "info"]}]
   },
   "parser": "babel-eslint"
 }

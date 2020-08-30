@@ -27,14 +27,12 @@ const Auth = () => {
 
       // Request the user account and save it into input
       const accounts = await web3.eth.requestAccounts();
-      console.log(accounts);
       const signature = await web3.eth.personal.sign(
         'Elton John',
         accounts[0],
         '',
       );
 
-      console.log(signature);
       register(
         email,
         firstName,
