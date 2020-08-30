@@ -6,7 +6,10 @@ import {MONGO_DB_URI, API_PORT} from './config';
 
 const app = express();
 
-app.use((req, res) => res.setHeader('Access-Control-Allow-Origin', '*'));
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.use(express.json());
 app.use(cookieParser());
