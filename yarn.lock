@@ -1798,6 +1798,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.54.tgz#a4b58d8df3a4677b6c08bfbc94b7ad7a7a5f82d1"
   integrity sha512-ge4xZ3vSBornVYlDnk7yZ0gK6ChHf/CHB7Gl1I0Jhah8DDnEQqBzgohYG4FX4p81TNirSETOiSyn+y1r9/IR6w==
 
+"@types/node@^12.12.6":
+  version "12.12.54"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.54.tgz#a4b58d8df3a4677b6c08bfbc94b7ad7a7a5f82d1"
+  integrity sha512-ge4xZ3vSBornVYlDnk7yZ0gK6ChHf/CHB7Gl1I0Jhah8DDnEQqBzgohYG4FX4p81TNirSETOiSyn+y1r9/IR6w==
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -1814,6 +1819,13 @@
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
+
+"@types/secp256k1@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/secp256k1/-/secp256k1-4.0.1.tgz#fb3aa61a1848ad97d7425ff9dcba784549fca5a4"
+  integrity sha512-+ZjSA8ELlOp8SlKi0YLB2tz9d5iPNEmOBd+8Rz21wTMdaXQIa9b6TEnD6l5qKOCypE7FSyPyck12qZJxSDNoog==
+  dependencies:
+    "@types/node" "*"
 
 "@types/secp256k1@^4.0.1":
   version "4.0.1"
@@ -2509,6 +2521,13 @@ aws4@^1.8.0:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
   integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
+
+axios@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
+  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 axios@^0.20.0:
   version "0.20.0"
@@ -5355,6 +5374,11 @@ follow-redirects@^1.10.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
 
+follow-redirects@^1.10.0:
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
+  integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
+
 for-in@^0.1.3:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-0.1.8.tgz#d8773908e31256109952b1fdb9b3fa867d2775e1"
@@ -7832,7 +7856,19 @@ mime-db@1.44.0:
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.44.0.tgz#fa11c5eb0aca1334b4233cb4d52f10c5a6272f92"
   integrity sha512-/NOTfLrsPBVeH7YtFPgsVWveuL+4SjjYxaQ1xtM1KMFj7HdxlBlxeyNLzhyJVx7r4rZGJAZ/6lkKCitSc/Nmpg==
 
+mime-db@1.44.0:
+  version "1.44.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.44.0.tgz#fa11c5eb0aca1334b4233cb4d52f10c5a6272f92"
+  integrity sha512-/NOTfLrsPBVeH7YtFPgsVWveuL+4SjjYxaQ1xtM1KMFj7HdxlBlxeyNLzhyJVx7r4rZGJAZ/6lkKCitSc/Nmpg==
+
 mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24:
+  version "2.1.27"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.27.tgz#47949f98e279ea53119f5722e0f34e529bec009f"
+  integrity sha512-JIhqnCasI9yD+SsmkquHBxTSEuZdQX5BuQnS2Vc7puQQQ+8yiP5AY5uWhpdv4YL4VM5c6iliiYWPgJ/nJQLp7w==
+  dependencies:
+    mime-db "1.44.0"
+
+mime-types@^2.1.16:
   version "2.1.27"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.27.tgz#47949f98e279ea53119f5722e0f34e529bec009f"
   integrity sha512-JIhqnCasI9yD+SsmkquHBxTSEuZdQX5BuQnS2Vc7puQQQ+8yiP5AY5uWhpdv4YL4VM5c6iliiYWPgJ/nJQLp7w==
@@ -8210,6 +8246,11 @@ nan@^2.12.1, nan@^2.14.0:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.1.tgz#d7be34dfa3105b91494c3147089315eff8874b01"
   integrity sha512-isWHgVjnFjh2x2yuJ/tj3JbwoHu3UC2dX5G/88Cm24yB6YopVgxvBObDY7n5xW6ExmFhJpSEQqFPvq9zaXc8Jw==
+
+nano-json-stream-parser@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/nano-json-stream-parser/-/nano-json-stream-parser-0.1.2.tgz#0cc8f6d0e2b622b479c40d499c46d64b755c6f5f"
+  integrity sha1-DMj20OK2IrR5xA1JnEbWS3Vcb18=
 
 nano-json-stream-parser@^0.1.2:
   version "0.1.2"
@@ -11403,6 +11444,20 @@ simple-get@^2.7.0:
     once "^1.3.1"
     simple-concat "^1.0.0"
 
+simple-concat@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/simple-concat/-/simple-concat-1.0.1.tgz#f46976082ba35c2263f1c8ab5edfe26c41c9552f"
+  integrity sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
+
+simple-get@^2.7.0:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/simple-get/-/simple-get-2.8.1.tgz#0e22e91d4575d87620620bc91308d57a77f44b5d"
+  integrity sha512-lSSHRSw3mQNUGPAYRqo7xy9dhKmxFXIjLjp4KHpf99GEH2VH7C3AM+Qfx6du6jhfUi6Vm7XnbEVEf7Wb6N8jRw==
+  dependencies:
+    decompress-response "^3.3.0"
+    once "^1.3.1"
+    simple-concat "^1.0.0"
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
@@ -12296,6 +12351,13 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
+typedarray-to-buffer@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/typedarray-to-buffer/-/typedarray-to-buffer-3.1.5.tgz#a97ee7a9ff42691b9f783ff1bc5112fe3fca9080"
+  integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
+  dependencies:
+    is-typedarray "^1.0.0"
+
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
@@ -13009,6 +13071,18 @@ websocket-extensions@>=0.1.1:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
+
+websocket@^1.0.31:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/websocket/-/websocket-1.0.32.tgz#1f16ddab3a21a2d929dec1687ab21cfdc6d3dbb1"
+  integrity sha512-i4yhcllSP4wrpoPMU2N0TQ/q0O94LRG/eUQjEAamRltjQ1oT1PFFKOG4i877OlJgCG8rw6LrrowJp+TYCEWF7Q==
+  dependencies:
+    bufferutil "^4.0.1"
+    debug "^2.2.0"
+    es5-ext "^0.10.50"
+    typedarray-to-buffer "^3.1.5"
+    utf-8-validate "^5.0.2"
+    yaeti "^0.0.6"
 
 websocket@^1.0.31:
   version "1.0.32"
