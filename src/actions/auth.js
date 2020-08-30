@@ -11,7 +11,6 @@ export const register = async (
   ethAddress,
   signature,
 ) => {
-  console.log(email, firstName, lastName, username, ethAddress, signature);
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -32,11 +31,8 @@ export const register = async (
       body,
       config,
     );
-    console.log(res);
     localStorage.setItem('token', res.data);
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 export const login = async (ethAddress, signature) => {
@@ -55,9 +51,6 @@ export const login = async (ethAddress, signature) => {
       body,
       config,
     );
-    console.log(res.data);
     localStorage.setItem('token', res.data);
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
