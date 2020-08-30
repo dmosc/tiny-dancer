@@ -35,6 +35,11 @@ const NewDocument = Loadable({
   loading: TopBarProgress,
 });
 
+const Document = Loadable({
+  loader: () => import('./views/document'),
+  loading: TopBarProgress,
+});
+
 const App = () => {
   const {token} = useUser();
 
@@ -53,6 +58,7 @@ const App = () => {
             <Route path="/signed" component={Signed} />
             <Route path="/my-documents" component={MyDocuments} />
             <Route path="/new-document" component={NewDocument} />
+            <Route path="/documents/:documentId" component={Document} />
             <Redirect to="/new-document" />
           </Switch>
         </MainLayout>
