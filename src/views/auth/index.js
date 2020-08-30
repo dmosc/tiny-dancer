@@ -1,9 +1,8 @@
-import React, {Fragment, useState, useEffect, Component} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import {login} from '../../actions/auth';
 import Web3 from 'web3';
 import {Link} from 'react-router-dom';
-import {Card, Form, Input, Button, Divider, Typography} from 'antd';
-import {UserOutlined, LockOutlined} from '@ant-design/icons';
+import {Card, Form, Input, Button, Typography} from 'antd';
 
 const {Item} = Form;
 const {Title} = Typography;
