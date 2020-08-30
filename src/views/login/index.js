@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Web3 from 'web3';
-import {login} from '../../actions/auth';
+import api from 'api';
 import {Button} from 'antd';
 
 const Login = () => {
@@ -33,7 +33,12 @@ const Login = () => {
         accounts[0],
         '',
       );
-      login(accounts[0], signature);
+
+      const res = await api.post('/users/login', {
+        ethAddres: accounts[0],
+        signature,
+      });
+      localStorage.setItem('token', res.data);
     } else {
       needMetamaskAlert();
     }
