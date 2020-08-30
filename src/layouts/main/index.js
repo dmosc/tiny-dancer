@@ -4,6 +4,7 @@ import {Layout as Layer} from 'antd';
 import Sidebar from './sidebar';
 import Navbar from './navbar';
 import Footer from './footer';
+import {Content} from './elements';
 
 const MainLayout = ({children}) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -13,7 +14,7 @@ const MainLayout = ({children}) => {
       <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
       <Layer>
         <Navbar />
-        {children}
+        <Content>{children}</Content>
         <Footer />
       </Layer>
     </Layer>

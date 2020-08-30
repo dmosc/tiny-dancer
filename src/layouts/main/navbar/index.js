@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {PageHeader} from 'antd';
-import {useLocation, useHistory} from 'react-router-dom';
+import {PageHeader, Button} from 'antd';
+import {useLocation, useHistory, Link} from 'react-router-dom';
 import {useUser} from 'providers/user';
+import {PlusOutlined} from '@ant-design/icons';
 import {NavbarContainer, Menu} from './elements';
-
 const {Item} = Menu;
 
 const NavBar = () => {
@@ -33,9 +33,11 @@ const NavBar = () => {
           onBack={() => history.goBack()}
           title={format(location.pathname)}
         />
-        <Item key="1" disabled={true}>
-          Foo Bar
-        </Item>
+        <Link to="/new-document">
+          <Button type="primary" shape="round" icon={<PlusOutlined />}>
+            Nuevo
+          </Button>
+        </Link>
         <Item key="3" onClick={handleLogout}>
           <span>Salir</span>
         </Item>
