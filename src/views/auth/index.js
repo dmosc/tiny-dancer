@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import api from 'api';
 import Web3 from 'web3';
+import {useUser} from 'providers/user';
 import {Link} from 'react-router-dom';
 import {Card, Form, Input, Button, Typography} from 'antd';
 
@@ -8,6 +9,7 @@ const {Item} = Form;
 const {Title} = Typography;
 
 const Auth = () => {
+  const {setToken} = useUser();
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -43,7 +45,7 @@ const Auth = () => {
         signature,
       });
 
-      localStorage.setItem('token', res.data);
+      setToken(res.data);
     } else {
       needMetamaskAlert();
     }

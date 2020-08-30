@@ -1,10 +1,13 @@
 import React, {Fragment, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import {useUser} from 'providers/user';
 import Web3 from 'web3';
 import api from 'api';
-import {Button} from 'antd';
+import {Button, message} from 'antd';
 
 const Login = () => {
+  const {setToken} = useUser();
+
   useEffect(() => {
     if (!window.web3) {
       needMetamaskAlert();
@@ -34,11 +37,15 @@ const Login = () => {
         '',
       );
 
-      const res = await api.post('/users/login', {
-        ethAddres: accounts[0],
-        signature,
-      });
-      localStorage.setItem('token', res.data);
+      try {
+        const res = await api.post('/users/login', {
+          ethAddress: accounts[0],
+          signature,
+        });
+        setToken(res.data);
+      } catch (err) {
+        message.error(err.message);
+      }
     } else {
       needMetamaskAlert();
     }
