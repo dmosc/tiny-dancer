@@ -11,6 +11,20 @@ steps:
       ]
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/tiny-dancer-backend:$COMMIT_SHA']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run',
+        'deploy',
+        'backend',
+        '--image',
+        'gcr.io/$PROJECT_ID/tiny-dancer-backend:$COMMIT_SHA',
+        '--region',
+        'us-central1',
+        '--platform',
+        'managed',
+      ]
   - name: 'gcr.io/cloud-builders/docker'
     args:
       [
@@ -23,3 +37,17 @@ steps:
       ]
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/tiny-dancer-frontend:$COMMIT_SHA']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run',
+        'deploy',
+        'frontend',
+        '--image',
+        'gcr.io/$PROJECT_ID/tiny-dancer-frontend:$COMMIT_SHA',
+        '--region',
+        'us-central1',
+        '--platform',
+        'managed',
+      ]
